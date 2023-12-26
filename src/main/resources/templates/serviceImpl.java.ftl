@@ -7,6 +7,7 @@ import ${package.Service}.${table.serviceName};
 </#if>
 import ${superServiceImplClassPackage};
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
 * @author ${author}
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 * @version 1.0
 */
 @Service
+@Transactional(rollbackFor = Throwable.class)
 <#if kotlin>
 open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperName}, ${entity}>()<#if table.serviceInterface>, ${table.serviceName}</#if> {
 
