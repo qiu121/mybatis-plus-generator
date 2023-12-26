@@ -5,7 +5,7 @@ import ${superServiceClassPackage};
 
 /**
 * @author ${author}
-* @since ${date}
+* @date ${date}
 * @version 1.0
 */
 <#if kotlin>

@@ -8,7 +8,7 @@ import ${mapperAnnotationClass.name};
 
 /**
 * @author ${author}
-* @since ${date}
+* @date ${date}
 * @version 1.0
 */
 <#if mapperAnnotationClass??>

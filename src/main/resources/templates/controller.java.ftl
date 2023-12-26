@@ -12,7 +12,7 @@ import ${superControllerClassPackage};
 
 /**
 * @author ${author}
-* @since ${date}
+* @date ${date}
 * @version 1.0
 */
 <#if restControllerStyle>
