@@ -31,9 +31,13 @@ class MybatisPlusGeneratorApplicationTests {
                     builder.entityBuilder().enableLombok()
                             .enableFileOverride()// 覆盖已生成文件
                             .idType(IdType.AUTO)// 全局主键类型
+                            // .enableChainModel() // 开启链式模型
                             // .enableTableFieldAnnotation()//开启实体类字段注解
                             .controllerBuilder().enableRestStyle()
-                            .mapperBuilder().mapperAnnotation(Mapper.class);
+                            .mapperBuilder()
+                            // .enableBaseColumnList()// 通用查询结果列
+                            // .enableBaseResultMap()// 通用查询映射结果
+                            .mapperAnnotation(Mapper.class);
                 })
                 .packageConfig(builder -> {
                     builder.parent("com.github.qiu121") // 设置父包名
