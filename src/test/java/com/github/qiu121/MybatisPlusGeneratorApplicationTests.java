@@ -35,6 +35,7 @@ class MybatisPlusGeneratorApplicationTests {
                             // .enableTableFieldAnnotation()//开启实体类字段注解
                             .controllerBuilder().enableRestStyle()
                             .mapperBuilder()
+                            .mapperAnnotation(Mapper.class)// 开启 @Mapper 注解
                             // .enableBaseColumnList()// 通用查询结果列
                             // .enableBaseResultMap()// 通用查询映射结果
                             .mapperAnnotation(Mapper.class);
