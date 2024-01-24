@@ -31,9 +31,9 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
     </#if>
 </#if>
-<#if table.convert>
-@TableName("${schemaName}${table.name}")
-</#if>
+<#--<#if table.convert>-->
+@TableName("${schemaName}`${table.name}`")
+<#--</#if>-->
 <#if springdoc>
 @Schema(name = "${entity}", description = "${table.comment!}")
 <#elseif swagger>
