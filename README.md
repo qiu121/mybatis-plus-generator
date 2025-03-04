@@ -6,7 +6,7 @@
 
 ## 完整配置参考
 
-https://baomidou.com/pages/981406/
+[https://baomidou.com/guides/new-code-generator](https://baomidou.com/guides/new-code-generator/)
 
 ## 使用步骤
 
