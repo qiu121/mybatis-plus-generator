@@ -3,17 +3,30 @@ package ${package.Entity};
 <#list table.importPackages as pkg>
 import ${pkg};
 </#list>
-
+<#assign hasDateField = false />
 <#assign hasSerialAnnotation = false />
 <#if entitySerialVersionUID>
     <#assign hasSerialAnnotation = true />
 </#if>
+<#list table.fields as field>
+    <#if field.propertyType?lower_case == "date" 
+    || field.propertyType?lower_case == "datetime" 
+    || field.propertyType?lower_case == "timestamp"
+    || field.propertyType?lower_case == "time"
+    || field.propertyType?lower_case == "localdatetime"
+    || field.propertyType?lower_case == "localdate">
+    <#assign hasDateField = true />
+    </#if>
+</#list>
 
 <#if springdoc>
 import io.swagger.v3.oas.annotations.media.Schema;
 <#elseif swagger>
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+</#if>
+<#if hasDateField>
+import com.fasterxml.jackson.annotation.JsonFormat;
 </#if>
 <#if hasSerialAnnotation>
 import java.io.Serial;
@@ -105,6 +118,14 @@ public class ${entity} {
     <#-- 逻辑删除注解 -->
     <#if field.logicDeleteField>
     @TableLogic
+    </#if>
+    <#if field.propertyType?lower_case == "date" 
+    || field.propertyType?lower_case == "datetime" 
+    || field.propertyType?lower_case == "timestamp"
+    || field.propertyType?lower_case == "time"
+    || field.propertyType?lower_case == "localdatetime"
+    || field.propertyType?lower_case == "localdate">
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     </#if>
     private ${field.propertyType} ${field.propertyName};
 </#list>
