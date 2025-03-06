@@ -3,15 +3,24 @@ package ${package.Entity};
 <#list table.importPackages as pkg>
 import ${pkg};
 </#list>
+
+<#assign hasSerialAnnotation = false />
+<#if entitySerialVersionUID>
+    <#assign hasSerialAnnotation = true />
+</#if>
+
 <#if springdoc>
 import io.swagger.v3.oas.annotations.media.Schema;
 <#elseif swagger>
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 </#if>
+<#if hasSerialAnnotation>
+import java.io.Serial;
+</#if>
 <#if entityLombokModel>
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
     <#if chainModel>
 import lombok.experimental.Accessors;
